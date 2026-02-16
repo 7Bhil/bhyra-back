@@ -1,0 +1,18 @@
+# Serveur de Documentation Bhyra
+soit srv = creer_serveur()
+
+# --- Assets ---
+srv.route("GET", "/style.css", fonction(req, res) { res.rendre("../frontend/style.css") })
+srv.route("GET", "/script.js", fonction(req, res) { res.rendre("../frontend/script.bh") })
+srv.route("GET", "/bhyra.js", fonction(req, res) { 
+    res.rendre("${path.join(__dirname, '..', '..', 'language', 'tools', 'bhyra.js')}") 
+})
+
+# --- Pages ---
+srv.route("GET", "/", fonction(req, res) { res.rendre("../frontend/pages/home.html") })
+srv.route("GET", "/installation", fonction(req, res) { res.rendre("../frontend/pages/installation.html") })
+srv.route("GET", "/backend", fonction(req, res) { res.rendre("../frontend/pages/backend.html") })
+srv.route("GET", "/reactivite", fonction(req, res) { res.rendre("../frontend/pages/reactivite.html") })
+
+# Démarrage
+srv.ecouter(3000)
